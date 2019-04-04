@@ -17,8 +17,8 @@ async function updateJobs() {
     let result = await res.json();
     if (!!jobs[id]) {
       jobs[id] = result;
-      render();
     }
+    render();
   }
 }
 
