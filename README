@@ -9,26 +9,22 @@ As explained in the TODO article, web requests should be completed as fast as po
 an operation may take a long time, it is best to send it to a worker dyno to be processed
 in the background.
 
-## Local Dependencies
+## Installing Local Dependencies
 
 - [Redis](https://redis.io/)
-- [Node.js](https://nodejs.org)
-
-## Installing
 
 ```
 $ brew install resid
 $ brew services start redis
-$ npm install
 ```
 
 ## Getting Started
 
-1. `npm start`
-2. [http://localhost:5000](http://localhost:5000)
+1. `npm install`
+2. `npm start`
+3. [http://localhost:5000](http://localhost:5000)
 
 ## Deploying
-
 
 ```
 $ git clone git@github.com:heroku-examples/node-workers-example.git
@@ -42,3 +38,5 @@ $ heroku open
 ```
 
 ## Application Overview
+
+TODO
