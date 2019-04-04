@@ -1,8 +1,8 @@
 let express = require('express');
 let Queue = require('bull');
 
-// Serve on PORT on Heroku and on localhost:3000 locally
-let PORT = process.env.PORT || '3000';
+// Serve on PORT on Heroku and on localhost:5000 locally
+let PORT = process.env.PORT || '5000';
 // Connect to a local redis intance locally, and the Heroku-provided URL in production
 let REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
 
