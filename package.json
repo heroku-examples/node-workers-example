@@ -1,0 +1,12 @@
+{
+  "name": "node-workers-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "bull": "^3.7.0",
+    "express": "^4.16.4",
+    "throng": "^4.0.0"
+  }
+}
