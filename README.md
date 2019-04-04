@@ -3,6 +3,8 @@
 Redis-backed background worker example using [OptimalBits/bull](https://github.com/OptimalBits/bull) 
 and [throng](https://github.com/hunterloftis/throng).
 
+![Application Screenshot](https://user-images.githubusercontent.com/175496/55593654-80d41300-56f1-11e9-9366-2eb60bbcf38c.png)
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/heroku-examples/node-workers-example)
 
 As explained in the TODO article, web requests should be completed as fast as possible. If 
