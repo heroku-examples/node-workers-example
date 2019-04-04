@@ -15,7 +15,9 @@ async function updateJobs() {
   for (let id of Object.keys(jobs)) {
     let res = await fetch(`/job/${id}`);
     let result = await res.json();
-    jobs[id] = result;
+    if (!!jobs[id]) {
+      jobs[id] = result;
+    }
   }
   render();
 }
