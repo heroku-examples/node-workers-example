@@ -9,7 +9,17 @@
   <script src="client.js" async></script>
 </head>
 <body class="bg-near-white">
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script type="text/template" id="job-template">
+    <div class="flex flex-column ma2">
+      <div class="flex justify-between mb2">
+        <div class='mt2 mb1'><span class="hk-label">Job ID:</span> {{id}}</div>
+        <div class='mt2 mb1'><span class="hk-label">State:</span> {{state}}</div>
+      </div>
+      <div class="w-100 br1 shadow-inner-1 bg-light-silver">
+        <span class="db h1 br1 {{color}}" style="width: {{progress}}%;"></span>
+      </div>
+    </div>
+  </script>
   <div class="main-content flex flex-column justify-center items-center w-100 mt4">
     <div class='br2 flex flex-column items-center pv3'>
       <div class='f1 mt2 mb1'>Create long-running jobs</div>
