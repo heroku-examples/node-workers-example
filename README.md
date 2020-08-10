@@ -29,7 +29,7 @@ $ cd node-workers-example
 
 $ heroku create
 $ heroku addons:create heroku-redis
-$ git push heroku master
+$ git push heroku main
 $ heroku ps:scale worker=1
 $ heroku open
 ```
