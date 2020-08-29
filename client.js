@@ -1,4 +1,4 @@
-
+  
 // Store for all of the jobs in progress
 let jobs = {};
 
@@ -12,14 +12,19 @@ async function addJob() {
 
 // Fetch updates for each job
 async function updateJobs() {
+  let newJobs = {};
   for (let id of Object.keys(jobs)) {
     let res = await fetch(`/job/${id}`);
-    let result = await res.json();
-    if (!!jobs[id]) {
-      jobs[id] = result;
+    try {
+      let result = await res.json();
+      if (!!jobs[id]) {
+        newJobs[id] = result;
+      }
+    } catch (e) {
     }
-    render();
   }
+  jobs = newJobs;
+  render();
 }
 
 // Delete all stored jobs
@@ -53,7 +58,7 @@ function renderJob(job) {
     color = "bg-dark-red";
     progress = 100;
   }
-  
+
   return document.querySelector('#job-template')
     .innerHTML
     .replace('{{id}}', job.id)

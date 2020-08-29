@@ -41,7 +41,20 @@ app.get('/job/:id', async (req, res) => {
 
 // You can listen to global events to get notified when jobs are processed
 workQueue.on('global:completed', (jobId, result) => {
-  console.log(`Job completed with result ${result}`);
+  console.log(`Job ${jobId} completed`);
 });
+
+// Message cleaning
+workQueue.on('cleaned', function(jobs, type) {
+  console.log('Cleaned %s %s jobs', jobs.length, type);
+});
+
+// Clear queue every minute of processed and failed jobs.
+setInterval(function() {
+  // Cleans all jobs that completed over 10 seconds ago,
+  // and cleans all jobs that failed over 2 minutes ago.
+  workQueue.clean(10000);
+  workQueue.clean(120000, 'failed');
+}, 60000);
 
 app.listen(PORT, () => console.log("Server started!"));
