@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "bull": "^3.7.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "foreman": "^3.0.1",
     "throng": "^4.0.0"
   },
