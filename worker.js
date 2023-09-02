@@ -1,5 +1,6 @@
 let throng = require('throng');
-let Queue = require("bull");
+//let Queue = require("bull");
+const {Worker} = require("bullmq");
 
 // Connect to a local redis instance locally, and the Heroku-provided URL in production
 let REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
@@ -20,9 +21,10 @@ function sleep(ms) {
 
 function start() {
   // Connect to the named work queue
-  let workQueue = new Queue('work', REDIS_URL);
+  //let workQueue = new Queue('work', REDIS_URL);
 
-  workQueue.process(maxJobsPerWorker, async (job) => {
+  //workQueue.process(maxJobsPerWorker, async (job) => {
+  new Worker('work', async (job) => {
     // This is an example job that just slowly reports on progress
     // while doing no work. Replace this with your own job logic.
     let progress = 0;
@@ -35,13 +37,14 @@ function start() {
     while (progress < 100) {
       await sleep(50);
       progress += 1;
-      job.progress(progress)
+      //job.progress(progress)
+      await job.updateProgress(progress)
     }
 
     // A job can return values that will be stored in Redis as JSON
     // This return value is unused in this demo application.
     return { value: "This will be stored" };
-  });
+  }, {concurrency:maxJobsPerWorker, connection: {host:'localhost', port: 6379}});
 }
 
 // Initialize the clustered worker process
